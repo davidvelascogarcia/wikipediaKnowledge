@@ -42,7 +42,6 @@ NOTE:
 ```bash
 pip install wikipedia
 ```
-
 Tested on: `windows 10`, `ubuntu 14.04`, `ubuntu 16.04`, `ubuntu 18.04`, `lubuntu 18.04` and `raspbian`.
 
 ## Status
