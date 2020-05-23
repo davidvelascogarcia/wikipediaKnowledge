@@ -195,7 +195,7 @@ while True:
     wikipediaKnowledge_outputPort.write(outputBottle)
 
 # Close YARP ports
-print("Closing YARP ports...")
+print("Closing YARP ports ...")
 wikipediaKnowledge_inputPort.close()
 wikipediaKnowledge_outputPort.close()
 
