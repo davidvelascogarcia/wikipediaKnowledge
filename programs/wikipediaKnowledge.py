@@ -35,10 +35,10 @@ print("*************************************************************************
 print("**************************************************************************")
 
 print("")
-print("Starting system...")
+print("Starting system ...")
 
 print("")
-print("Loading Wikipedia Knowledge engine...")
+print("Loading Wikipedia Knowledge engine ...")
 
 print("")
 print("")
@@ -46,14 +46,14 @@ print("*************************************************************************
 print("YARP configuration:")
 print("**************************************************************************")
 print("")
-print("Initializing YARP network...")
+print("Initializing YARP network ...")
 
 # Init YARP Network
 yarp.Network.init()
 
 
 print("")
-print("Opening data input port with name /wikipediaKnowledge/data:i ...")
+print("[INFO] Opening data input port with name /wikipediaKnowledge/data:i ...")
 
 # Open input data port
 wikipediaKnowledge_inputPort = yarp.Port()
@@ -64,7 +64,7 @@ wikipediaKnowledge_inputPort.open(wikipediaKnowledge_inputPortName)
 inputBottle=yarp.Bottle()
 
 print("")
-print("Opening data output port with name /wikipediaKnowledge/data:o ...")
+print("[INFO] Opening data output port with name /wikipediaKnowledge/data:o ...")
 
 # Open output data port
 wikipediaKnowledge_outputPort = yarp.Port()
@@ -76,11 +76,11 @@ outputBottle=yarp.Bottle()
 
 
 print("")
-print("Initializing wikipediaKnowledge engine...")
+print("Initializing wikipediaKnowledge engine ...")
 
 # Get system configuration
 print("")
-print("Detecting system and release version...")
+print("Detecting system and release version ...")
 systemPlatform = platform.system()
 systemRelease = platform.release()
 
@@ -108,7 +108,7 @@ clientTitleResults = "null"
 clientURLResults = "null"
 clientContentResults = "null"
 
-print("Client configuration done.")
+print("[INFO] Client configuration done.")
 
 
 while True:
@@ -121,7 +121,7 @@ while True:
     dataToResolve = inputBottle.toString()
     dataToResolve = dataToResolve.replace('"','')
 
-    print("Data received: "+str(dataToResolve))
+    print("[RECEIVED] Data received: "+str(dataToResolve))
 
     print("")
     print("")
@@ -139,7 +139,7 @@ while True:
 
         clientPossibleResults = wikipedia.search(str(dataToResolve))
         print("")
-        print("Results founded.")
+        print("[INFO] Results founded.")
 
 
         print("")
@@ -151,16 +151,16 @@ while True:
             clientTitleResults = serverRespone.title
             clientContentResults = serverRespone.content
             print("")
-            print("Specific results founded ...")
+            print("[INFO] Specific results founded ...")
 
         except:
             print("")
-            print("Sorry i couldn´t find specific results, only possible ...")
+            print("[ERROR] Sorry i couldn´t find specific results, only possible ...")
 
 
 
         print("")
-        print("Server response done.")
+        print("[INFO] Server response done.")
 
         print("")
         print("")
@@ -168,16 +168,16 @@ while True:
         print("Results:")
         print("**************************************************************************")
         print("")
-        print("Possible results: "+ str(clientPossibleResults))
+        print("[INFO] Possible results: "+ str(clientPossibleResults))
         print("")
-        print("URL results: "+ str(clientURLResults))
+        print("[INFO] URL results: "+ str(clientURLResults))
         print("")
-        print("Title results: "+ str(clientTitleResults))
+        print("[INFO] Title results: "+ str(clientTitleResults))
         print("")
-        print("Content results: "+ str(clientContentResults))
+        print("[INFO] Content results: "+ str(clientContentResults))
     except:
         print("")
-        print("Sorry, i could´t resolve your request.")
+        print("[ERROR] Sorry, i could´t resolve your request.")
 
 
     # Send output results
